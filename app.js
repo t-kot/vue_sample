@@ -2,7 +2,7 @@ $(function() {
   //※componentの宣言に戻り値はない
   Vue.component('city', {
     template: '#city_template',
-    parent: '#app',
+    //parent: '#app', # v-repeatの中で使うと自動的にparentがセットされるっぽい
     created: function() {
       this.$data.isFeature = true;
     },
