@@ -13,19 +13,34 @@
       </ul>
     </div>
     <script id='city_template' type='text/x-template'>
-      <p>都市</p>
-      <p>{{item.text}}</p>
-      <a href='#' v-on='click: showDesc()'>説明を見る</a>
+      <div v-if='visible'>
+        <p>都市</p>
+        <p>{{text}}</p>
+        <a href='#' v-on='click: showDesc()'>説明を見る</a>
+      </div>
+      <div v-if='!visible'>
+        これは見れません
+      </div>
     </script>
     <script id='other_template' type='text/x-template'>
-      <p>その他</p>
-      <p>{{text}}</p>
-      <a href='#' v-on='click: showWarning()'>...</a>
+      <div v-if='visible'>
+        <p>その他</p>
+        <p>{{text}}</p>
+        <a href='#' v-on='click: showWarning()'>...</a>
+      </div>
+      <div v-if='!visible'>
+        これは見れません
+      </div>
     </script>
     <script id='food_template' type='text/x-template'>
-      <p>食</p>
-      <p>{{text}}</p>
-      <a href='#' v-on='click: printLog(this)'>出力</a>
+      <div v-if='visible'>
+        <p>食</p>
+        <p>{{text}}</p>
+        <a href='#' v-on='click: printLog(this)'>出力</a>
+      </div>
+      <div v-if='!visible'>
+        これは見れません
+      </div>
     </script>
   </body>
 </html>

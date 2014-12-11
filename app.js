@@ -38,10 +38,10 @@ $(function() {
     data: {
       title: 'アメリカといえば',
       items: [
-        { text: 'ニューヨーク', type: 'city' },
-        { text: '大統領', type: 'other' },
-        { text: 'ハンバーガー', type: 'food' }
-      ]
+        { text: 'ニューヨーク', type: 'city', visible: true },
+        { text: '大統領', type: 'other', visible: false },
+        { text: 'ハンバーガー', type: 'food', visible: true }
+      ] //サーバサイドと連携したいならここをajaxでとってくるなり、data属性経由で引っ張れば良い
     }
   });
 });
