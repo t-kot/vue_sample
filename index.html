@@ -13,32 +13,32 @@
       </ul>
     </div>
     <script id='city_template' type='text/x-template'>
-      <div v-if='visible'>
+      <div v-if='$data.isFeature'> <!-- プロパティを見たいときは$dataが必要なので注意 -->
         <p>都市</p>
         <p>{{text}}</p>
         <a href='#' v-on='click: showDesc()'>説明を見る</a>
       </div>
-      <div v-if='!visible'>
+      <div v-if='!$data.isFeature'> <!-- 単に!isFeatureだとundefinedの否定でtrueになる! -->
         これは見れません
       </div>
     </script>
     <script id='other_template' type='text/x-template'>
-      <div v-if='visible'>
+      <div v-if='isFeature'> <!-- ここはメソッドを期待している -->
         <p>その他</p>
         <p>{{text}}</p>
         <a href='#' v-on='click: showWarning()'>...</a>
       </div>
-      <div v-if='!visible'>
+      <div v-if='!isFeature'>
         これは見れません
       </div>
     </script>
     <script id='food_template' type='text/x-template'>
-      <div v-if='visible'>
+      <div v-if='isFeature'>
         <p>食</p>
         <p>{{text}}</p>
         <a href='#' v-on='click: printLog(this)'>出力</a>
       </div>
-      <div v-if='!visible'>
+      <div v-if='!isFeature'>
         これは見れません
       </div>
     </script>

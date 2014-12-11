@@ -1,8 +1,10 @@
 $(function() {
-  var component = Vue.component('city', {
+  //※componentの宣言に戻り値はない
+  Vue.component('city', {
     template: '#city_template',
+    parent: '#app',
     created: function() {
-      console.log(this);
+      this.$data.isFeature = true;
     },
     methods: {
       showDesc: function() {
@@ -10,26 +12,34 @@ $(function() {
       }
     }
   });
-  var component = Vue.component('other', {
+
+  Vue.component('other', {
     template: '#other_template',
+    parent: '#app',
     created: function() {
-      console.log(this);
+      this.isFeature = true;
     },
     methods: {
       showWarning: function() {
         alert('エラー');
+      },
+      isFeature: function() {
+        return false;
       }
     }
   });
-  var component = Vue.component('food', {
+
+  Vue.component('food', {
     template: '#food_template',
+    parent: '#app',
     created: function() {
-      console.log(this);
+      this.isFeature = true;
+      console.log(this.$el); //ここではcomponentの$elはnullになっている
     },
     methods: {
       printLog: function(vm) {
-        console.log(vm);
-        console.log(this);
+        console.log(app);
+        console.log(this.$el); //ここではセットされている
       }
     }
   });
@@ -38,10 +48,11 @@ $(function() {
     data: {
       title: 'アメリカといえば',
       items: [
-        { text: 'ニューヨーク', type: 'city', visible: true },
-        { text: '大統領', type: 'other', visible: false },
-        { text: 'ハンバーガー', type: 'food', visible: true }
+        { text: 'ニューヨーク', type: 'city' },
+        { text: '大統領', type: 'other' },
+        { text: 'ハンバーガー', type: 'food' }
       ] //サーバサイドと連携したいならここをajaxでとってくるなり、data属性経由で引っ張れば良い
     }
   });
+  console.log(app); //このappはvm
 });
